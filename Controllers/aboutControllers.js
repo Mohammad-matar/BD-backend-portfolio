@@ -1,9 +1,9 @@
-const personalInfo = require("../models/personalinfo");
+const About = require("../models/about");
 
 //getALl
 class Controller {
     getAll(req, res, next) {
-        personalInfo.find((err, response) => {
+        About.find((err, response) => {
             if (err) return next(err);
             res.status(200).json({ data: response });
         });
@@ -13,7 +13,7 @@ class Controller {
     getById(req, res, next) {
         let { id } = req.params;
         if (id.match(/^[0-9a-fA-F]{24}$/)) {
-            personalInfo.findOne({ _id: id }, (err, response) => {
+            About.findOne({ _id: id }, (err, response) => {
                 if (err) return next(err);
                 res.status(200).json({ success: true, response });
             });
@@ -25,7 +25,7 @@ class Controller {
     post(req, res, next) {
         let body = req.body;
         console.log(body)
-        let doc = new personalInfo(body);
+        let doc = new About(body);
         doc.save((err, response) => {
             if (err) return next(err);
             res.status(200).send({ success: true, response });
@@ -36,7 +36,7 @@ class Controller {
     put(req, res, next) {
         let { id } = req.params;
         let data = req.body;
-        personalInfo.updateOne({ _id: id }, data, (err, response) => {
+        About.updateOne({ _id: id }, data, (err, response) => {
             if (err) return next(err);
             res.status(200).send({ success: true, response });
         });
@@ -45,7 +45,7 @@ class Controller {
     //delete
     delete(req, res, next) {
         let { id } = req.params;
-        personalInfo.findByIdAndDelete({ _id: id }, (err, response) => {
+        About.findByIdAndDelete({ _id: id }, (err, response) => {
             if (err) return next(err);
             res.status(200).send({ success: true, response });
         });

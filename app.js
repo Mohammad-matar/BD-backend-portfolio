@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 
-var personalInfo = require('./routes/personalInfo')
+var personalInfo = require('./routes/personalInfo');
+var about = require('./routes/about');
 var uploadRouter = require('./routes/upload');
 
 var app = express();
@@ -18,7 +19,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/personalinfo', personalInfo)
+app.use('/personalinfo', personalInfo);
+app.use('/about', about);
 app.use('/upload', uploadRouter);
 
 mongoose
