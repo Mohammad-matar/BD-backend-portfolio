@@ -10,6 +10,7 @@ var about = require('./routes/about');
 var service = require('./routes/service');
 var experience = require('./routes/experience');
 var project = require('./routes/project');
+var skill = require('./routes/skills');
 var uploadRouter = require('./routes/upload');
 
 var app = express();
@@ -27,6 +28,7 @@ app.use('/about', about);
 app.use('/services', service);
 app.use('/experience', experience);
 app.use('/project', project);
+app.use('/skill', skill);
 app.use('/upload', uploadRouter);
 
 mongoose
